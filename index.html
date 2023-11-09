@@ -2,30 +2,12 @@
 
 <html>
 <head>
-  <title>hopefully unblocked proxy</title>
-  <h1><strong>hopefully unblocked proxy</strong></h1>
-  <meta name="description" content="github pages site">
+  <title>unblocked games and more!</title>
+  <h1><strong>your go to website for all your unblocked needs</strong></h1>
+  <meta name="keywords" content="proxy, games, online chat">
+  <meta author="iker fesser">
 </head>
 <body>
-  <div id="proxyContent"></div>
-  <script>
-    document.getElementById('proxyForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      var url = document.querySelector('input[name="url"]').value;
-      var proxyContent = document.getElementById('proxyContent');
-    
-      // Make a GET request to the URL using a proxy server
-      fetch('https://proxysite.com/proxy?url=' + encodeURIComponent(url))
-        .then(function(response) {
-          return response.text();
-        })
-        .then(function(html) {
-          proxyContent.innerHTML = html;
-        })
-        .catch(function(error) {
-          console.log('An error occurred:', error);
-        });
-    });
-  </script>
+  
 </body>
 </html>
