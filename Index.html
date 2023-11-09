@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<div id="proxyContent"></div>
+</head>
+<body>
+  <script>
+    document.getElementById('proxyForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var url = document.querySelector('input[name="url"]').value;
+      var proxyContent = document.getElementById('proxyContent');
+    
+      // Make a GET request to the URL using a proxy server
+      fetch('https://proxysite.com/proxy?url=' + encodeURIComponent(url))
+        .then(function(response) {
+          return response.text();
+        })
+        .then(function(html) {
+          proxyContent.innerHTML = html;
+        })
+        .catch(function(error) {
+          console.log('An error occurred:', error);
+        });
+    });
+  </script>
+</body>
+</html>
