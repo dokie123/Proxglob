@@ -16,7 +16,16 @@
     <script>
         function proxyRequest() {
             var url = document.getElementById("urlInput").value;
-            document.getElementById("proxyFrame").src = "https://cors-anywhere.herokuapp.com/" + url;
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://cors-anywhere.herokuapp.com/" + url);
+            xhr.setRequestHeader("origin", "https://dokie123.github.io"); // Replace with your website's origin
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("proxyFrame").src = "data:text/html;charset=utf-8," + encodeURIComponent(xhr.responseText);
+                }
+            };
+            xhr.send();
         }
     </script>
 </body>
