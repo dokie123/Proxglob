@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Proxy</title>
+</head>
+<body>
+  <form id="proxy-form">
+    <input type="url" id="url-input" placeholder="Enter URL">
+    <button type="submit">Go</button>
+  </form>
+
+  <iframe id="proxy-iframe"></iframe>
+
+  <script>
+    // Get form and iframe elements
+    const proxyForm = document.getElementById('proxy-form');
+    const urlInput = document.getElementById('url-input');
+    const proxyIframe = document.getElementById('proxy-iframe');
+
+    // Listen for form submission
+    proxyForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // Get the entered URL from the input
+      const url = urlInput.value.trim();
+
+      // Set the iframe source to the entered URL
+      proxyIframe.src = 'https://cors-anywhere.herokuapp.com/' + url;
+    });
+  </script>
+</body>
+</html>
