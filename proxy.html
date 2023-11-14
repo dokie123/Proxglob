@@ -12,20 +12,33 @@
   <iframe id="proxy-iframe"></iframe>
 
   <script>
-    // Get form and iframe elements
+        // Get form and iframe elements
     const proxyForm = document.getElementById('proxy-form');
     const urlInput = document.getElementById('url-input');
     const proxyIframe = document.getElementById('proxy-iframe');
 
     // Listen for form submission
-    proxyForm.addEventListener('submit', function (event) {
-      event.preventDefault();
+    proxyForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent form from submitting
 
-      // Get the entered URL from the input
-      const url = urlInput.value.trim();
+      const url = urlInput.value;
+      const xhr = new XMLHttpRequest();
+  
+      // Set the origin header
+      xhr.setRequestHeader('origin', 'http://your-website.com');
 
-      // Set the iframe source to the entered URL
-      proxyIframe.src = 'https://cors-anywhere.herokuapp.com/' + url;
+      xhr.open('GET', url, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            // Display the content in the iframe
+            proxyIframe.src = `data:text/html;charset=utf-8,${encodeURIComponent(xhr.responseText)}`;
+          } else {
+            console.error('Error:', xhr.status);
+          }
+        }
+      };
+      xhr.send();
     });
   </script>
 </body>
