@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File System</title>
+  <style>
+    /* CSS for the navigation bar */
+    .navbar {
+      background-color: blue;
+      padding: 10px;
+    }
+    
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navbar li {
+      display: inline;
+      margin-right: 20px;
+    }
+    
+    .navbar a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* CSS for the file system */
+    .files {
+      margin-top: 20px;
+      width: 400px;
+      padding: 20px;
+      background-color: lightgray;
+    }
+    
+    .file {
+      margin-bottom: 10px;
+    }
+    
+    .file a {
+      color: black;
+      text-decoration: none;
+    }
+    
+    /* CSS for the file upload form */
+    .upload-form {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: lightblue;
+    }
+
+    .upload-form input[type="file"] {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Files</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="upload-form">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="file"><br>
+      <input type="submit" value="Upload" name="submit">
+    </form>
+  </div>
+
+  <div class="files">
+    <?php
+      // PHP code to list and manage files
+      $directory = 'filesystem/'; // Directory where the uploaded files
