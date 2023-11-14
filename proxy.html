@@ -23,9 +23,10 @@
 
       const url = urlInput.value;
       const xhr = new XMLHttpRequest();
+      const origin = console.log(window.location.origin);
   
       // Set the origin header
-      xhr.setRequestHeader('origin', 'http://your-website.com');
+      xhr.setRequestHeader('origin', origin);
 
       xhr.open('GET', url, true);
       xhr.onreadystatechange = function() {
