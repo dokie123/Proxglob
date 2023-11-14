@@ -4,41 +4,9 @@
   <title>Web Proxy</title>
 </head>
 <body>
-  <form id="proxy-form">
-    <input type="url" id="url-input" placeholder="Enter URL">
-    <button type="submit">Go</button>
+  <form action="proxy.php">
+    <input type="text" id="URL" name="URL" value="https://example.com">
+    <input type="submit" name="GO!">
   </form>
-
-  <iframe id="proxy-iframe"></iframe>
-
-  <script>
-// Get form and iframe elements
-const proxyForm = document.getElementById('proxy-form');
-const urlInput = document.getElementById('url-input');
-const proxyIframe = document.getElementById('proxy-iframe');
-
-proxyForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // Prevent form from submitting
-
-  const url = urlInput.value;
-  const xhr = new XMLHttpRequest();
-  const origin = console.log(window.location.origin);
-
-  xhr.open('GET', url, true);
-
-  // Set the origin header
-  xhr.setRequestHeader('origin', origin);
-
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // Code to handle successful response
-      }
-    }
-  };
-
-  xhr.send();
-});
-  </script>
 </body>
 </html>
