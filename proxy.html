@@ -12,35 +12,33 @@
   <iframe id="proxy-iframe"></iframe>
 
   <script>
-        // Get form and iframe elements
-    const proxyForm = document.getElementById('proxy-form');
-    const urlInput = document.getElementById('url-input');
-    const proxyIframe = document.getElementById('proxy-iframe');
+// Get form and iframe elements
+const proxyForm = document.getElementById('proxy-form');
+const urlInput = document.getElementById('url-input');
+const proxyIframe = document.getElementById('proxy-iframe');
 
-    // Listen for form submission
-    proxyForm.addEventListener('submit', (event) => {
-      event.preventDefault(); // Prevent form from submitting
+proxyForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form from submitting
 
-      const url = urlInput.value;
-      const xhr = new XMLHttpRequest();
-      const origin = console.log(window.location.origin);
-  
-      // Set the origin header
-      xhr.setRequestHeader('origin', origin);
+  const url = urlInput.value;
+  const xhr = new XMLHttpRequest();
+  const origin = console.log(window.location.origin);
 
-      xhr.open('GET', url, true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            // Display the content in the iframe
-            proxyIframe.src = `data:text/html;charset=utf-8,${encodeURIComponent(xhr.responseText)}`;
-          } else {
-            console.error('Error:', xhr.status);
-          }
-        }
-      };
-      xhr.send();
-    });
+  xhr.open('GET', url, true);
+
+  // Set the origin header
+  xhr.setRequestHeader('origin', origin);
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Code to handle successful response
+      }
+    }
+  };
+
+  xhr.send();
+});
   </script>
 </body>
 </html>
