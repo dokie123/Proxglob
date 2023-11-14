@@ -4,4 +4,5 @@ function validateForm() {
     alert("URL must be filled out");
     return false;
   }
+  return x;
 }
