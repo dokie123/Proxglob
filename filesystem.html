@@ -42,15 +42,34 @@
       text-decoration: none;
     }
     
-    /* CSS for the file upload form */
-    .upload-form {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: lightblue;
+    /* Style the drop zone */
+    .drop-zone {
+      width: 300px;
+      height: 200px;
+      border: 2px dashed #ccc;
+      border-radius: 5px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #555;
+      margin: 20px auto;
     }
 
-    .upload-form input[type="file"] {
-      margin-bottom: 10px;
+    /* Add some styles for the hover state */
+    .drop-zone.hover {
+      border-color: #aaa;
+      background-color: #f8f8f8;
+    }
+
+    /* Hide the default file input */
+    .file-input {
+      display: none;
+    }
+
+    /* Style the file name text */
+    .file-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -63,14 +82,42 @@
       <li><a href="#">bookmarklets</a></li>
     </ul>
   </div>
+  <div class="file-name">Drag and drop a file here</div>
+    <input id="fileInput" class="file-input" type="file" />
+    <script>
+      // Get the drop zone element
+      var dropZone = document.getElementById('dropZone');
 
-  <div class="upload-form">
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" id="file"><br>
-      <input type="submit" value="Upload" name="submit">
-    </form>
+      // Add event listeners for dragenter and dragleave events
+      dropZone.addEventListener('dragenter', handleDragEnter, false);
+      dropZone.addEventListener('dragleave', handleDragLeave, false);
+
+      // Add event listener for the drop event
+      dropZone.addEventListener('drop', handleDrop, false);
+
+      function handleDragEnter(event) {
+        event.preventDefault();
+        dropZone.classList.add('hover');
+      }
+
+      function handleDragLeave(event) {
+        event.preventDefault();
+        dropZone.classList.remove('hover');
+      }
+
+      function handleDrop(event) {
+        event.preventDefault();
+        dropZone.classList.remove('hover');
+
+        var fileInput = document.getElementById('fileInput');
+        fileInput.files = event.dataTransfer.files;
+
+        // Display the file name
+        var fileName = document.querySelector('.file-name');
+        fileName.textContent = fileInput.files[0].name;
+      }
+    </script>
   </div>
-
   <div class="files">
     <?php
       // PHP code to list and manage files
