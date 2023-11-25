@@ -42,13 +42,12 @@
 </div>
   
 <script>
-  window.onload = function() {
-    const gallery = document.getElementById("image-gallery");
+  function animals(id, min, max) {
+    const gallery = document.getElementById(id);
 
-    for (let i = 2; i <= 59; i++) {
+    for (let i = min; i <= max; i++) {
       const image = document.createElement("img");
       image.src = "Cute animals/IMG-" + i + ".JPG";
-      image.alt = "cute_animal " + i;
       gallery.appendChild(image);
     }
 
@@ -56,6 +55,10 @@
     galleryContainer.addEventListener("scroll", function() {
       gallery.style.transform = `translateX(-${galleryContainer.scrollLeft}px)`;
     });
+  }
+  window.onload = function() {
+    animals(kitten, 2, 14)
+    animals(RedPanda, 15
   };
 </script>
   
