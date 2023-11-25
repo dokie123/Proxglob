@@ -37,18 +37,18 @@
   
   <!-- Add the rest of your content for the homepage here -->
   <div class="gallery-container">
-    <div class="gallery" id="kittens"></div><br>
-    <div class="gallery" id="RedPanda"></div><br>
-    <div class="gallery" id="bernese"></div><br>
-    <div class="gallery" id="pom"></div><br>
-</div> 
+  <div class="gallery" id="image-gallery">
+  </div>
+</div>
+  
 <script>
-  function animals(id, min, max) {
-    const gallery = document.getElementById(id);
+  window.onload = function() {
+    const gallery = document.getElementById("image-gallery");
 
-    for (let i = min; i <= max; i++) {
+    for (let i = 2; i <= 59; i++) {
       const image = document.createElement("img");
       image.src = "Cute animals/IMG-" + i + ".JPG";
+      image.alt = "cute_animal " + i;
       gallery.appendChild(image);
     }
 
@@ -56,13 +56,8 @@
     galleryContainer.addEventListener("scroll", function() {
       gallery.style.transform = `translateX(-${galleryContainer.scrollLeft}px)`;
     });
-  }
-  window.onload = function() {
-    animals(kitten, 2, 14)
-    animals(RedPanda, 15, 24)
-    animals(bernese, 25, 39)
-    animals(pom, 51, 57)
   };
 </script>
+  
 </body>
 </html>
