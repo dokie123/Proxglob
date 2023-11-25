@@ -37,10 +37,11 @@
   
   <!-- Add the rest of your content for the homepage here -->
   <div class="gallery-container">
-  <div class="gallery" id="image-gallery">
-  </div>
-</div>
-  
+    <div class="gallery" id="kittens"></div><br>
+    <div class="gallery" id="RedPanda"></div><br>
+    <div class="gallery" id="bernese"></div><br>
+    <div class="gallery" id="pom"></div><br>
+</div> 
 <script>
   function animals(id, min, max) {
     const gallery = document.getElementById(id);
@@ -58,9 +59,10 @@
   }
   window.onload = function() {
     animals(kitten, 2, 14)
-    animals(RedPanda, 15
+    animals(RedPanda, 15, 24)
+    animals(bernese, 25, 39)
+    animals(pom, 51, 57)
   };
 </script>
-  
 </body>
 </html>
